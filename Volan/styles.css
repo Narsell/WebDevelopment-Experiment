@@ -1,0 +1,87 @@
+
+/*GENERAL*/
+body
+{
+  background-image: url(img/main_bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.buttons, .mod_buttons
+{
+  margin: 10px auto;
+}
+
+
+.jumbotron
+{
+  margin-bottom: 0px;
+  background-image: url(https://coverfiles.alphacoders.com/453/45317.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  text-shadow: 0.5px 0.5px black;
+  margin-bottom: 0px;
+}
+
+/*Modal Mods*/
+.mod_buttons
+{
+  background-color: #f4511e; 
+  border: none;
+}
+
+.modal-header 
+{
+  background-color: #f4511e;
+  color: white;
+}
+
+
+/*Carousel mods*/
+
+ .carousel-inner > .item > img,
+ .carousel-inner > .item > a > img {
+      width: 100%;
+      margin: auto;
+   
+ }
+
+/*Navbar mods*/
+#main_navbar
+{
+  z-index: 20;
+}
+
+.navbar 
+{
+  margin-bottom: 0px;
+}
+
+.navbar-nav>li>.dropdown-menu
+{
+  background-color: #222222;
+}
+
+.dropdown-menu>li>a
+{
+  color: #868686;
+}
+
+/*Affix mods*/
+
+#affix_box
+{
+  display: none;
+}
+
+ .affix 
+{
+      top: 0px;
+      width: 100%;
+ }
+ .affix + .container-fluid 
+{
+      padding-top: 70px;
+}
+
