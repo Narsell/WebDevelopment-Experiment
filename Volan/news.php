@@ -9,15 +9,18 @@ session_start();
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Volan</title>
-
+    
+      <!--BOOSTRAP-->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
+      
+     <!--LINKS-->
       <link rel="stylesheet" type="text/css" href="styles/main.css">
       <script src="js/auth.js"></script>
       <script src="js/affix.js"></script>
+     <!--FONTS-->
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 
   </head>
   <body>
@@ -43,8 +46,8 @@ session_start();
            <div class="collapse navbar-collapse" id="Navbar">
 
                <ul class="nav navbar-nav">
-                 <li class="active"><a href="#">Home</a></li>
-                 <li><a href="news.php">News</a></li>
+                 <li><a href="index.php">Home</a></li>
+                 <li class="active"><a href="news.php">News</a></li>
                  <li><a href="#">Forums</a></li>
                </ul>
 
@@ -187,41 +190,29 @@ session_start();
             </div>
           </div>
     
-    <div id="Carousel" class="carousel slide" data-ride="carousel">
-              <!-- Indicators -->
-              <ol class="carousel-indicators">
-                  <li data-target="#Carousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#Carousel" data-slide-to="1"></li>
-                  <li data-target="#Carousel" data-slide-to="2"></li>
-              </ol>
+    <div class="space_medium"></div>
+     
+    <div class="news container">
+        <div class="card">
+             <div id="news_header "class="page-header"><h1>NEWS TITLE</h1></div>
+             <div id="news_content">
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel egestas velit.
+             </div>
+        </div>
 
-              <!-- Wrapper for slides -->
-              <div class="carousel-inner">
-                  <div class="item active">
-                    <img src="https://cdn2.unrealengine.com/ueOverview%2FnewAssets%2Fmarketplace2-min-1792x836-c55ccd6012fc8b4285af7493686954fb1b0353a7.jpg" alt="1">
-                  </div>
-                
-                  <div class="item">
-                    <img src="https://cdn2.unrealengine.com/ueOverview%2FnewAssets%2FPersona2-min-1792x836-90c2b6654da50a2b17fe492a64cb229168d2a618.jpg" alt="2">
-                  </div>
-
-                  <div class="item">
-                    <img src="https://cdn2.unrealengine.com/ueOverview%2Ffeatures%2Ffeature-3-min-1792x836-0c386308dd7c424ff8c9e52a5aed6afaf798dc69.jpg" alt="3">
-                  </div>
-              </div>
-
-              <!-- Left and right controls -->
-              <a class="left carousel-control" href="#Carousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="right carousel-control" href="#Carousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="sr-only">Next</span>
-              </a>
+        <div class="card">
+             <div id="news_header "class="page-header"><h1>NEWS TITLE</h1></div>
+             <div id="news_content">
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel egestas velit.
+             </div>
+         </div>
     </div>
-    
-    <div style="height:1000px;">  </div>
+
+
+ 
+
+
+
 
   </body>
 </html>

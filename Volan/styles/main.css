@@ -2,11 +2,17 @@
 /*GENERAL*/
 body
 {
-  background-image: url(img/main_bg.png);
+  background-image: url(../img/main_bg.png);
   background-repeat: no-repeat;
   background-size: cover;
 
 }
+
+.space_medium
+{
+ height: 50px; 
+}
+
 .buttons, .mod_buttons
 {
   margin: 10px auto;
@@ -84,4 +90,7 @@ body
 {
       padding-top: 70px;
 }
+
+/*NEWS*/
+
 
