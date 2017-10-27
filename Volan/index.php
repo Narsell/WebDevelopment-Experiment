@@ -9,17 +9,24 @@ session_start();
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Volan</title>
-
+    
+      <script src="https://use.fontawesome.com/79133ed6a3.js"></script>
+    
+    <!--BOOSTRAP, JQUERY-->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-      
+    
+    <!--MDB-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/css/mdb.min.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>
+     
+    <!--OWN-->
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
       <link rel="stylesheet" type="text/css" href="styles/main.css">
-      <script src="js/auth.js"></script>
-      <script src="js/affix.js"></script>
+ 
+
 
   </head>
   <body>
@@ -31,14 +38,16 @@ session_start();
         <button id="dw_button"type="button" class="btn btn-success">Download</button>
       
     </header>
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Volan</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
       </li>
@@ -46,6 +55,7 @@ session_start();
         <a class="nav-link" href="#">News</a>
       </li>
     
+      
     </ul>  
 
            <ul class="navbar-nav">
@@ -57,10 +67,10 @@ session_start();
               {
                 echo"
                   <li class='MyAccountDD nav-item dropdown'>
-                    <a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                    <a class='nav-link dropdown-toggle waves-effect waves-light' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                       $user
                     </a>
-                    <div class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>
+                    <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
                       <a class='dropdown-item' href='account.php'>My Profile</a>
                       <a class='dropdown-item' href='#' onclick='LogOut()'>Log Out</a>
                     </div>
@@ -72,7 +82,7 @@ session_start();
 
                     <li class='nav-item dropdown'>
                       <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                        Your Account
+                        <i class='fa fa-user'></i>
                       </a>
                       <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
                         <a class='dropdown-item' href='#' data-toggle='modal' data-target='#log_box'>Login</a>
@@ -87,21 +97,14 @@ session_start();
              
            </ul>
     
-       <form class="form-inline my-2 my-lg-0">
-            <div id="SearchBar" class="input-group">
-                <input type="text" class="form-control" placeholder="Search">
-                <div class="input-group-btn">
-                   <button class="btn btn-default" type="submit">
-                      <i class="glyphicon glyphicon-search"></i>
-                   </button>
-                </div>
-           </div>
+       <form class="form-inline">            
+                <input class="form-control mr-sm-2 "type="text" class="form-control" placeholder="Search" aria-label="Search">
        </form>
     
           </div>
       </div>
     </nav>
-  
+
 <div id="affix_box" style="height:50px">
       
 </div>
@@ -140,7 +143,7 @@ session_start();
             </div>
             
             <div class="modal-footer">
-              <a href="#">c le perdió pendeja?</a>
+              <a href="#">Lost your password?</a>
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         
             </div>
@@ -222,5 +225,10 @@ session_start();
     
     <div style="height:1000px;">  </div>
 
+  <!--OWN-->    
+  <script src="js/auth.js"></script>
+  <script src="js/affix.js"></script>
+  <!--MDB JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>    
   </body>
 </html>
