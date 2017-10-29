@@ -6,7 +6,7 @@ $con = connect();
 $cod = $_GET['cod'];
 $email = $_GET['email'];
 
-$sql = "select * from game where email = '$email'";
+$sql = "select * from v_users where email = '$email'";
 $request = mysqli_query($con, $sql);
 
 $data = mysqli_fetch_array($request);

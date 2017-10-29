@@ -7,10 +7,10 @@ $con = connect();
 $user = $_POST['user'];
 $pwd= $_POST['pwd'];
 
-$consulta = "select * from game where user = '$user'";
-$resultado = mysqli_query($con, $consulta);
+$consulta = "select * from v_users where user = '$user'";
+$res = mysqli_query($con, $consulta);
 
-$total =mysqli_num_rows($resultado);
+$total =mysqli_num_rows($res);
 
 if($total == 0)
 {
@@ -19,7 +19,7 @@ if($total == 0)
 }
 else {
 
-  $datos = mysqli_fetch_array($resultado); //Guardo el user que coincide en un "arreglo"
+  $datos = mysqli_fetch_array($res); //Guardo el user que coincide en un "arreglo"
   $pwd_bd = $datos["pwd"]; //comparo su contraseña con la que ingresó el usuario.
   $is_val = $datos["is_val"];
 

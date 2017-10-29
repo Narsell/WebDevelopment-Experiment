@@ -15,159 +15,149 @@ require("server.php");
 $con = connect();
 
 
+$sql = "select * from v_users where user = '$user'";
+$res = mysqli_query($con, $sql);
+$data = mysqli_fetch_array($res);
+
+$points = $data["points"];
+$email = $data["email"];
+
 ?>
 
 <!DOCTYPE html>
 <html>
   <head>
       <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Volan</title>
-   <!--BOOSTRAP 4-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="styles/account.css">  
-  <link rel="stylesheet" type="text/css" href="styles/main.css">
-  <script src="js/auth.js"></script>
+    <script src="https://use.fontawesome.com/79133ed6a3.js"></script>
+    
+    <!--BOOSTRAP CSS-->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    
+    <!--MDB CSS-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/css/mdb.min.css">
+     
+    <!--OWN-->
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="styles/main.css">
+      <link rel="stylesheet" type="text/css" href="styles/account.css">
+    
     
   </head>
   <body>
 
- <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Volan</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="index.php">Home <span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">News</a>
+        <a class="nav-link" href="news.php">News</a>
       </li>
     
+      
     </ul>  
+
+           <ul class="navbar-nav">
+             <?php
+              $user = $_SESSION['user'];
+
+                echo"
+                  <li class='MyAccountDD nav-item active dropdown'>
+                    <a class='nav-link dropdown-toggle waves-effect waves-light' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                      $user
+                    </a>
+                    <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
+                      <a class='dropdown-item' href='account.php'>My Profile</a>
+                      <a class='dropdown-item' href='#' onclick='LogOut()'>Log Out</a>
+                    </div>
+                  </li>";
+
+              ?>
+             
+           </ul>
     
-    <ul class="navbar-nav">
-      <?php 
-         echo"
-      <li id='MyAccountDD'class='nav-item dropdown'>
-        <a class='nav-link dropdown-toggle' href='account.php' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-          $user
-        </a>
-        <div class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>
-          <a class='dropdown-item' href='account.php'>My Profile</a>
-          <a class='dropdown-item' href='#' onclick='LogOut()'>Log Out</a>
-        </div>
-      </li>";
-       
-       ?>
+       <form class="form-inline">            
+                <input class="form-control mr-sm-2 "type="text"  class="form-control" placeholder="Search" aria-label="Search">
    
-     </ul>
+       </form>
     
-    <form class="form-inline my-2 my-lg-0">
-            <div id="SearchBar" class="input-group">
-                <input type="text" class="form-control" placeholder="Search">
-                <div class="input-group-btn">
-                   <button class="btn btn-default" type="submit">
-                      <i class="glyphicon glyphicon-search"></i>
-                   </button>
-                </div>
-           </div>
-    </form>
-  </div>
-</nav> 
-    
-    
+          </div>
+      </div>
+    </nav>
+        
 <div class="container">
     <div class="row">
-          <div class="profile-header-container">   
+          <div class="profile-header-container">
+                 <!-- user badge -->
+                 <div class="user-label-container">
+                    <span class="label label-default rank-label"> <?php echo $user?></span>
+                 </div>
               <div class="profile-header-img">
                   <img class="rounded-circle" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" />
-                  <!-- badge -->
+                  <!-- points badge -->
                   <div class="rank-label-container">
-                      <span class="label label-default rank-label">100 puntos</span>
+                    <span class="label label-default rank-label" data-toggle='tooltip' data-placement='right' title='These are your points!'> <?php echo $points." <i class='fa fa-bolt' aria-hidden='true'></i>"?></span>
                   </div>
               </div>
           </div> 
     </div>
  </div>
-
-    
-<div id="user_panel" class="container card">
- 
-  <div class="card-body">
+<div class="container">
    
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Summary</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Settings</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Game Info</a>
-              </li>
-        </ul>
-          <div class="tab-content" id="myTabContent">
-              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                         </br>
-                            <div class="input-group col-xs-4">
-                              <span class="input-group-addon">User</span>
-                              <input readonly type="text" class="form-control" value="<?php echo $user ?>">
-                            </div>
-                        </br>
-                            <div class="input-group col-xs-4">
-                              <span class="input-group-addon">Points</span>
-                              <input readonly type="text" class="form-control" value="0">
-                            </div>
-                        </br>
-                            <div class="input-group col-xs-4">
-                              <span class="input-group-addon">Rank</span>
-                              <input readonly type="text" class="form-control" value="Newbie">
-                            </div>
+      <div id="user_panel" class="card ">
+            <div class="card-header"> 
+              User Panel
+            </div>
+            <div class="card-body">
+                    <div class="tab-content" id="UserTabContent">
 
-              </div>
-              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                              </br>
+                          <div class="col-lg-10 us_elements">
                             <div class="input-group">
-                              <span class="input-group-addon">Email</span>
-                              <input readonly type="text" class="form-control" value="<?php ?>">
+                              <input readonly type="text" class="form-control" value="<?php echo $email?>">
+                              <span class="input-group-btn">
+                                <button class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Change your email." type="button" onclick='ChangeEmail()'><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                              </span>
                             </div>
-                        </br>
-                            <div class="input-group">
-                              <span class="input-group-addon">Password</span>
-                              <input readonly type="text" class="form-control" value="0">
-                            </div>
-                        </br>
-                            <div class="input-group">
-                              <span class="input-group-addon">Secret Question</span>
-                              <input readonly type="text" class="form-control" value="">
-                            </div> 
+                          </div>
+
+                    </div>
+
+           </div>
 
 
-
-              </div>
-
-              <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-
-              </div>
-
-          </div>
-   
- </div>
-
-   
- </div>  
-   
+      </div>  
+</div>    
 <div style="height:1000px;">
   
 </div>
+<a href="#" data-toggle="tooltip" data-placement="right" title="Hooray!">Right</a>
     
+  <!--OWN-->    
+  <script src="js/auth.js"></script>
+  <script src="js/affix.js"></script>
+  <!--BOOSTRAP, JQUYERY-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <!--MDB JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.10.1/umd/popper.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+
+
   </body>
 </html>

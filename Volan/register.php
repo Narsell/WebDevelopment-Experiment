@@ -10,7 +10,7 @@ $email = $_POST['email'];
 $cod = rand(1000, 9999);
 $pwd = md5($pwd);
 
-$sql = "insert into game values ('$user', '$email', '$pwd', '$cod', '0')";
+$sql = "insert into v_users values ('$user', '$email', '$pwd', '$cod', '0')";
 $request = mysqli_query($con, $sql);
 if($request)
 {
@@ -27,10 +27,10 @@ $link = "http://estudiantes.is.escuelaing.edu.co/~2114604/game/validate.php?cod=
 
 $message = "<p>Welcome to AAA Game, ". $user ."!</p><p>Click the following link to activate your account: ".$link."</p>";
 
-$From= 'admin@game.com';
+$From= 'admin@volanstudios.com';
 $to = $email;
 $bbc = '';
-$subject = "AAA Game registration";
+$subject = "Volan Studios Registration";
 
 //emial headers
 $headers = "From: " . $From . "\r\n";

@@ -56,3 +56,8 @@ function LogOut()
         
       });
 }
+
+function ChangeEmail()
+{
+  alert("change email")
+}

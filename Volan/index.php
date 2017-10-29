@@ -12,15 +12,11 @@ session_start();
     
       <script src="https://use.fontawesome.com/79133ed6a3.js"></script>
     
-    <!--BOOSTRAP, JQUERY-->
+    <!--BOOSTRAP CSS-->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
     
-    <!--MDB-->
+    <!--MDB CSS-->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/css/mdb.min.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>
      
     <!--OWN-->
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -228,6 +224,10 @@ session_start();
   <!--OWN-->    
   <script src="js/auth.js"></script>
   <script src="js/affix.js"></script>
+  <!--BOOSTRAP, JQUYERY-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
   <!--MDB JS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>    
   </body>

@@ -13,12 +13,6 @@ body
  height: 50px; 
 }
 
-.buttons, .mod_buttons
-{
-  margin: 10px auto;
-}
-
-
 .jumbotron
 {
   margin-bottom: 0px;
@@ -28,19 +22,6 @@ body
   color: white;
   text-shadow: 0.5px 0.5px black;
 
-}
-
-/*Modal Mods*/
-.mod_buttons
-{
-  background-color: #f4511e; 
-  border: none;
-}
-
-.modal-header 
-{
-  background-color: #f4511e;
-  color: white;
 }
 
 
@@ -54,10 +35,6 @@ body
  }
 
 /*Navbar mods*/
-#main_navbar
-{
-  z-index: 20;
-}
 
 .navbar 
 {
