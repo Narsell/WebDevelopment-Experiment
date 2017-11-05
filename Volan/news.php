@@ -1,6 +1,21 @@
 <?php
 session_start();
 
+require("server.php");
+$con = connect();
+
+
+$sql_main = "select * from v_news where tag='0'";
+$sql_right = "select * from v_news where tag='1'";
+$sql_sec = "select * from v_news where tag='2'";
+
+$res_main = mysqli_query($con, $sql_main);
+$res_right = mysqli_query($con, $sql_right);
+$res_sec = mysqli_query($con, $sql_sec);
+
+$data_main=mysqli_fetch_array($res_main);
+$data_right=mysqli_fetch_array($res_right);
+
 ?>
 
 <!DOCTYPE html>
@@ -10,104 +25,94 @@ session_start();
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Volan</title>
     
-      <!--BOOSTRAP-->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      
-     <!--LINKS-->
+      <script src="https://use.fontawesome.com/79133ed6a3.js"></script>
+    
+    <!--BOOSTRAP CSS-->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    
+    <!--MDB CSS-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/css/mdb.min.css">
+     
+    <!--OWN-->
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="styles/main.css">
-      <script src="js/auth.js"></script>
-      <script src="js/affix.js"></script>
-     <!--FONTS-->
-      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 
   </head>
   <body>
-    <header class="jumbotron text center">
+   <!-- <header class="jumbotron text center">
         <h1>Volan Studios</h1>
         <h3>Nullam vel accumsan enim</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel egestas velit.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel egestas velit lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
         <button id="dw_button"type="button" class="btn btn-success">Download</button>
       
-    </header>
-    <nav id ="main_navbar" class="navbar navbar-inverse">
-        <div class="container-fluid">
-           <div class="navbar-header">
-                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Navbar">
-                   <span class="icon-bar"></span>
-                   <span class="icon-bar"></span>
-                   <span class="icon-bar"></span>
-                 </button>
+    </header>-->
 
-                <a class="navbar-brand" href="#">Volan</a>
-           </div>
-           <div class="collapse navbar-collapse" id="Navbar">
+    <nav id='navbar' class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark top-navbar">
+  <a class="navbar-brand" href="#">Volan</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-               <ul class="nav navbar-nav">
-                 <li><a href="index.php">Home</a></li>
-                 <li class="active"><a href="news.php">News</a></li>
-                 <li><a href="#">Forums</a></li>
-               </ul>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">News</a>
+      </li>
+    
+      
+    </ul>  
 
-              <form class="navbar-form navbar-right">
-                 <div class="input-group">
-                   <input type="text" class="form-control" placeholder="Search">
-                   <div class="input-group-btn">
-                     <button class="btn btn-default" type="submit">
-                       <i class="glyphicon glyphicon-search"></i>
-                     </button>
-                   </div>
-                 </div>
-             </form>
-
-           <ul class="nav navbar-nav navbar-right">
+           <ul class="navbar-nav">
              <?php
               $isAuth = $_SESSION['isAuth'];
               $user = $_SESSION['user'];
 
               if($isAuth)
               {
-                echo "
-                <li class='dropdown'>
-                    <a class='dropdown-toggle' data-toggle='dropdown' href='#'>$user
-                    <span class='caret'></span></a>
-                    <ul class='dropdown-menu'>
-                      <li><a href='account.php'>My profile</a></li>
-                      <li><a href='#' onclick='LogOut()'>Log Out</a></li>
-                    </ul>
-               </li>
-
-                ";
+                echo"
+                  <li class='MyAccountDD nav-item dropdown'>
+                    <a class='nav-link dropdown-toggle waves-effect waves-light' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                      $user
+                    </a>
+                    <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
+                      <a class='dropdown-item' href='account.php'>My Profile</a>
+                      <a class='dropdown-item' href='#' onclick='LogOut()'>Log Out</a>
+                    </div>
+                  </li>";
               }
               else
               {
                 echo "
 
-                <li class='dropdown'>
-                    <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Your Account
-                    <span class='caret'></span></a>
-                    <ul class='dropdown-menu'>
-                      <li><a data-toggle='modal' href='#reg_box'><span class='glyphicon glyphicon-user'></span> Sign Up</a></li>
-                      <li><a data-toggle='modal' href='#log_box'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>
-                     
-                    </ul>
-               </li>
+                    <li class='nav-item dropdown'>
+                      <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                        <i class='fa fa-user'></i>
+                      </a>
+                      <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+                        <a class='dropdown-item' href='#' data-toggle='modal' data-target='#log_box'>Login</a>
+                        <a class='dropdown-item' href='#' data-toggle='modal' data-target='#reg_box'>Sign Up</a>
+                      </div>
+                    </li>
                 ";
 
               }
 
               ?>
-
+             
            </ul>
+    
+       <form class="form-inline">            
+                <input class="form-control mr-sm-2 "type="text" class="form-control" placeholder="Search" aria-label="Search">
+       </form>
+    
           </div>
       </div>
-    </nav>
-    <div id="affix_box" style="height:50px">
-      
-    </div>
-
+    </nav>    
+   
     <div class="modal fade" id="log_box" role="dialog">
         <div class="modal-dialog">
 
@@ -190,25 +195,84 @@ session_start();
             </div>
           </div>
     
-    <div class="space_medium"></div>
-     
-    <div class="news container">
-        <div class="card">
-             <div id="news_header "class="page-header"><h1>NEWS TITLE</h1></div>
-             <div id="news_content">
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel egestas velit.
-             </div>
+<div class='container top-lg'>
+      
+      <div class="card-deck">
+    
+              <?php 
+                        echo
+                             "
+                               <div id='main_card' class='card text-center col-md-10 no-gutters'>
+                                  <img class='card-img' src='https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-529639.jpg' alt='Card image'>
+                                  <div class='card-img-overlay'>
+
+
+                                      <h4 class='card-title'>".$data_main['title']."</h4>
+                                      <p class='card-text'>".$data_main['desc']."</p>
+
+
+                                  </div>
+                             </div>
+                             
+                             
+                             
+                             
+                             <div id='main_card' class='card text-center col-md-4 no-gutters'>
+                                <img class='card-img' src='https://wallpapershome.com/images/pages/pic_v/11609.jpg' alt='Card image'>
+                                  <div class='card-img-overlay'>
+                                                                  
+                                    <p class='card-text'>".$data_right['desc']."</p>
+                                 
+                                </div>
+                             </div>
+                             
+                                                                                                                  
+                             ";
+
+
+              ?>
+
         </div>
+        <div class='card-columns top-md'>  
+          <?php
+            while($data_sec = mysqli_fetch_array($res_sec))
+            {
+                     echo
+                       "
 
-        <div class="card">
-             <div id="news_header "class="page-header"><h1>NEWS TITLE</h1></div>
-             <div id="news_content">
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel egestas velit.
-             </div>
-         </div>
-    </div>
+                          <div class='card bg-dark text-white text-center'>
+                            <img class='card-img' src='https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%287%29.jpg' alt='Card image'></a>
+                            <div class='card-img-overlay'>
+                              <h4 class='card-title text-white'>".$data_sec['title']."</h4>
+                              <p class='card-text text-white' >".$data_sec['desc']."</p>
+                            </div>
+                            <div class='card-footer'>
+                              <small class='text-muted'>Written by: ".$data_sec['author']."</small>
+                            </div>
+                          </div>
 
 
+                       ";      
+
+            }
+
+           ?>
+       </div>
+
+</div>
+
+     
+
+
+  <!--BOOSTRAP, JQUYERY-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <!--MDB JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>   
+    <!--OWN-->        
+  <script src="js/auth.js"></script>
+  <script src="js/affix.js"></script>   
  
 
 

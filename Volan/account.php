@@ -48,7 +48,7 @@ $email = $data["email"];
   </head>
   <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark top-navbar">
   <a class="navbar-brand" href="#">Volan</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -94,7 +94,7 @@ $email = $data["email"];
       </div>
     </nav>
         
-<div class="container">
+<div class="container top-md">
     <div class="row">
           <div class="profile-header-container">
                  <!-- user badge -->
@@ -141,9 +141,7 @@ $email = $data["email"];
 </div>
 <a href="#" data-toggle="tooltip" data-placement="right" title="Hooray!">Right</a>
     
-  <!--OWN-->    
-  <script src="js/auth.js"></script>
-  <script src="js/affix.js"></script>
+
   <!--BOOSTRAP, JQUYERY-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
@@ -151,6 +149,9 @@ $email = $data["email"];
   <!--MDB JS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>    
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.10.1/umd/popper.min.js"></script>
+    <!--OWN-->    
+  <script src="js/auth.js"></script>
+  <script src="js/affix.js"></script>
 
 <script>
 $(document).ready(function(){

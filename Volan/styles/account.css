@@ -2,6 +2,8 @@
 /**
  * Profile image component
  */
+
+
 .profile-header-container{
     margin: 50px auto;
     text-align: center;
@@ -70,8 +72,5 @@
   padding: 1.35rem 1px 1.35rem 1px;
 }
 
-.container
-{
 
-}
 

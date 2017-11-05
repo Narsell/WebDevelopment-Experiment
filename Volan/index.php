@@ -26,17 +26,9 @@ session_start();
 
   </head>
   <body>
-    <header id='header' class="jumbotron text center">
-        <h1>Volan Studios</h1>
-        <h3>Nullam vel accumsan enim</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel egestas velit.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel egestas velit lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-        <button id="dw_button"type="button" class="btn btn-success">Download</button>
-      
-    </header>
     
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav id='navbar' class="navbar fixed-top navbar-expand-lg navbar-dark top-navbar">
   <a class="navbar-brand" href="#">Volan</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -48,7 +40,7 @@ session_start();
         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">News</a>
+        <a class="nav-link" href="news.php">News</a>
       </li>
     
       
@@ -99,14 +91,62 @@ session_start();
     
           </div>
       </div>
-    </nav>
+    </nav> 
+  <div id="video_slide" class="carousel slide carousel-fade" data-ride="carousel">
+        <!--Indicators-->
+        <ol class="carousel-indicators">
+            <li data-target="#video_slide" data-slide-to="0" class="active"></li>
+            <li data-target="#video_slide" data-slide-to="1"></li>
+            <li data-target="#video_slide" data-slide-to="2"></li>
+        </ol>
+        <!--/.Indicators-->
+        <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+            <video class="video-fluid" autoplay loop>
+                <source src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4" />
+    
+                Your device does not support video
+            </video>
+        </div>
+        <div class="carousel-item">
+            <video class="video-fluid" autoplay loop>
+                <source src="https://mdbootstrap.com/img/video/forest.mp4" type="video/mp4" />
+                Your device does not support video
 
-<div id="affix_box" style="height:50px">
-      
+            </video>
+        </div>
+        <div class="carousel-item">
+            <video class="video-fluid" autoplay loop>
+                <source src="https://mdbootstrap.com/img/video/Agua-natural.mp4" type="video/mp4" />
+                Your device does not support video
+
+            </video>
+        </div>
+    </div>
+        <!--/.Slides-->
+        <!--Controls-->
+        <a class="carousel-control-prev" href="#video_slide" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#video_slide" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        <!--/.Controls-->
 </div>
+    
+    <!--<header id='header' class="jumbotron text center">
+        <h1>Volan Studios</h1>
+        <h3>Nullam vel accumsan enim</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel egestas velit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel egestas velit lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+        <button id="dw_button"type="button" class="btn btn-success">Download</button>
+      
+    </header>-->
+    
 
-  
-  
     <div class="modal" tabindex='-1' id="log_box" role="dialog">
         <div class="modal-dialog" role='document'>
 
@@ -192,43 +232,19 @@ session_start();
             </div>
           </div>
       
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img class="d-block w-100" src="https://cdn2.unrealengine.com/ueOverview%2FnewAssets%2Fmarketplace2-min-1792x836-c55ccd6012fc8b4285af7493686954fb1b0353a7.jpg" alt="First slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="https://cdn2.unrealengine.com/ueOverview%2FnewAssets%2FPersona2-min-1792x836-90c2b6654da50a2b17fe492a64cb229168d2a618.jpg" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="https://cdn2.unrealengine.com/ueOverview%2Ffeatures%2Ffeature-3-min-1792x836-0c386308dd7c424ff8c9e52a5aed6afaf798dc69.jpg" alt="Third slide">
-                </div>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-  </div>  
-    
+   
     <div style="height:1000px;">  </div>
 
-  <!--OWN-->    
-  <script src="js/auth.js"></script>
-  <script src="js/affix.js"></script>
+
+
   <!--BOOSTRAP, JQUYERY-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
   <!--MDB JS-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>   
+    <!--OWN-->        
+  <script src="js/auth.js"></script>
+  <script src="js/affix.js"></script>   
   </body>
 </html>
