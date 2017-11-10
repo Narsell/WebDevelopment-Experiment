@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if(!$_SESSION)
+{
+  $_SESSION['isAuth'] = null;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +14,8 @@ session_start();
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Volan</title>
-    
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="js/test.js"></script>
       <script src="https://use.fontawesome.com/79133ed6a3.js"></script>
     
     <!--BOOSTRAP CSS-->
@@ -29,7 +35,7 @@ session_start();
     
 
   <nav id='navbar' class="navbar fixed-top navbar-expand-lg navbar-dark top-navbar">
-  <a class="navbar-brand" href="#">Volan</a>
+  <a class="navbar-brand" href="#">Volann</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -48,11 +54,11 @@ session_start();
 
            <ul class="navbar-nav">
              <?php
-              $isAuth = $_SESSION['isAuth'];
-              $user = $_SESSION['user'];
+              
 
-              if($isAuth)
+              if($_SESSION['isAuth'])
               {
+                $user = $_SESSION['user'];
                 echo"
                   <li class='MyAccountDD nav-item dropdown'>
                     <a class='nav-link dropdown-toggle waves-effect waves-light' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
@@ -96,33 +102,26 @@ session_start();
         <!--Indicators-->
         <ol class="carousel-indicators">
             <li data-target="#video_slide" data-slide-to="0" class="active"></li>
-            <li data-target="#video_slide" data-slide-to="1"></li>
-            <li data-target="#video_slide" data-slide-to="2"></li>
+
         </ol>
         <!--/.Indicators-->
         <!--Slides-->
     <div class="carousel-inner" role="listbox">
-        <div class="carousel-item active">
-            <video class="video-fluid" autoplay loop>
-                <source src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4" />
-    
-                Your device does not support video
-            </video>
+  
+      <div class="carousel-item active">
+        <div id="kek">
+              <video class="video-fluid" poster="https://i.stack.imgur.com/BfXRi.png" autoplay loop muted>
+                  <source src="https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4" />
+                  <source src="https://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" type="video/ogg" />
+              </video>
         </div>
-        <div class="carousel-item">
-            <video class="video-fluid" autoplay loop>
-                <source src="https://mdbootstrap.com/img/video/forest.mp4" type="video/mp4" />
-                Your device does not support video
+        
+        <div id="kok">
+           <source src="img/sylvanas2.jpg">
+        </div>        
+        </div>
 
-            </video>
-        </div>
-        <div class="carousel-item">
-            <video class="video-fluid" autoplay loop>
-                <source src="https://mdbootstrap.com/img/video/Agua-natural.mp4" type="video/mp4" />
-                Your device does not support video
-
-            </video>
-        </div>
+      
     </div>
         <!--/.Slides-->
         <!--Controls-->
@@ -136,7 +135,9 @@ session_start();
         </a>
         <!--/.Controls-->
 </div>
-    
+  
+
+  
     <!--<header id='header' class="jumbotron text center">
         <h1>Volan Studios</h1>
         <h3>Nullam vel accumsan enim</h3>
@@ -231,14 +232,13 @@ session_start();
 
             </div>
           </div>
-      
-   
+
     <div style="height:1000px;">  </div>
 
 
 
   <!--BOOSTRAP, JQUYERY-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
   <!--MDB JS-->

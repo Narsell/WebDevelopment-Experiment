@@ -8,7 +8,7 @@ body
 
 }
 
-.space_medium
+.space_md
 {
  height: 50px; 
 }
@@ -39,6 +39,16 @@ body
 {
     padding-right: 0;
     padding-left: 0;
+  
+}
+
+.main
+{
+  margin: 0;
+}
+
+.right
+{
   
 }
 

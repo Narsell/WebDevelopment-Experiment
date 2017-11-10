@@ -4,10 +4,15 @@ session_start();
 require("server.php");
 $con = connect();
 
+if(!$_SESSION)
+{
+  
+}
 
-$sql_main = "select * from v_news where tag='0'";
-$sql_right = "select * from v_news where tag='1'";
-$sql_sec = "select * from v_news where tag='2'";
+
+$sql_main = "select * from news where tag='0'";
+$sql_right = "select * from news where tag='1'";
+$sql_sec = "select * from news where tag='2'";
 
 $res_main = mysqli_query($con, $sql_main);
 $res_right = mysqli_query($con, $sql_right);
@@ -68,11 +73,11 @@ $data_right=mysqli_fetch_array($res_right);
 
            <ul class="navbar-nav">
              <?php
-              $isAuth = $_SESSION['isAuth'];
-              $user = $_SESSION['user'];
 
-              if($isAuth)
-              {
+
+              if($_SESSION['isAuth'])
+              {            
+                $user = $_SESSION['user'];
                 echo"
                   <li class='MyAccountDD nav-item dropdown'>
                     <a class='nav-link dropdown-toggle waves-effect waves-light' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
@@ -197,42 +202,52 @@ $data_right=mysqli_fetch_array($res_right);
     
 <div class='container top-lg'>
       
-      <div class="card-deck">
+      <div class="row card-deck no-gutters">
     
-              <?php 
-                        echo
-                             "
-                               <div id='main_card' class='card text-center col-md-10 no-gutters'>
-                                  <img class='card-img' src='https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-529639.jpg' alt='Card image'>
-                                  <div class='card-img-overlay'>
+          
+                <?php 
+                          echo
+                               "
+                                 <div class='main card text-center col-8'>
+                                    <img class='img-fluid' src='img/sylvanas1.jpg' alt='Card image'>
+                                    <div class='card-img-overlay'>
 
 
-                                      <h4 class='card-title'>".$data_main['title']."</h4>
-                                      <p class='card-text'>".$data_main['desc']."</p>
+                                        <h4 class='card-title text-white'>".$data_main['title']."</h4>
+                                        <p class='card-text text-white'>".$data_main['des']."</p>
 
 
-                                  </div>
-                             </div>
-                             
-                             
-                             
-                             
-                             <div id='main_card' class='card text-center col-md-4 no-gutters'>
-                                <img class='card-img' src='https://wallpapershome.com/images/pages/pic_v/11609.jpg' alt='Card image'>
-                                  <div class='card-img-overlay'>
-                                                                  
-                                    <p class='card-text'>".$data_right['desc']."</p>
-                                 
-                                </div>
-                             </div>
-                             
-                                                                                                                  
-                             ";
+                                    </div>
+                                 </div>
+                               ";
 
+                    ?>
+                  
+                 <div class="container col-4 no-gutters">                
+                       
+                        <?php
+                                     echo"<div class='right card text-center col-12  '>
+                                            <img class='card-img img-fluid' src='img/sylvanas1.jpg' alt='Card image'>
+                                              <div class='card-img-overlay'>
+                                                <h4 class='card-title text-white'>".$data_right['title']."</h4>                                                                  
+                                                <p class='card-text text-white'>".$data_right['des']."</p>
+                                              </div>
+                                           </div>
+                                          
+                                           <div class='card text-center col-12 '>
+                                            <img class='card-img img-fluid' src='img/sylvanas1.jpg' alt='Card image'>
+                                              <div class='card-img-overlay'>
+                                                <h4 class='card-title text-white'>".$data_right['title']."</h4>                                                                  
+                                                <p class='card-text text-white'>".$data_right['des']."</p>
+                                              </div>
+                                           </div>
+                                     ";
+                          ?>
 
-              ?>
-
-        </div>
+                
+                   </div>
+  </div>
+        
         <div class='card-columns top-md'>  
           <?php
             while($data_sec = mysqli_fetch_array($res_sec))
@@ -241,10 +256,10 @@ $data_right=mysqli_fetch_array($res_right);
                        "
 
                           <div class='card bg-dark text-white text-center'>
-                            <img class='card-img' src='https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%287%29.jpg' alt='Card image'></a>
+                            <img class='card-img' src='https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-529639.jpg' alt='Card image'></a>
                             <div class='card-img-overlay'>
                               <h4 class='card-title text-white'>".$data_sec['title']."</h4>
-                              <p class='card-text text-white' >".$data_sec['desc']."</p>
+                              <p class='card-text text-white' >".$data_sec['des']."</p>
                             </div>
                             <div class='card-footer'>
                               <small class='text-muted'>Written by: ".$data_sec['author']."</small>

@@ -9,14 +9,14 @@ session_start();
    {
      echo"
      <script>
-     window.open('index.php', '_self');
+     window.open('../index.php', '_self');
      </script>";
    }
   
 require("../server.php");
 $con = connect();
 
-$sql ="select * from v_news";
+$sql ="select * from news";
 $res = mysqli_query($con, $sql);
 
 ?>
@@ -76,7 +76,7 @@ $res = mysqli_query($con, $sql);
                         <td>".$data['id']."</td>
                         <td>".$data['tag']."</td>
                         <td>".$data['title']."</td>
-                        <td>".$data['desc']."</td>
+                        <td>".$data['des']."</td>
                         <td>".$data['author']."</td>
                         <td>
                             <div class='btn-group'>
@@ -105,8 +105,8 @@ $res = mysqli_query($con, $sql);
                    
                      <div class="md-form">
                       <div class="col-xs-6">
-                          <input type='text' id="desc" class="form-control"></textarea>
-                          <label for="desc">SHORT DESCRIPTION</label>
+                          <input type='text' id="des" class="form-control">
+                          <label for="des">SHORT DESCRIPTION</label>
                       </div>
                     </div>
 
@@ -123,12 +123,15 @@ $res = mysqli_query($con, $sql);
                       <option value="1">Right Panel</option>
                       <option value="2">Secondary Panel</option>
                     </select>
+              
+                    <input type='file' id="img" name='pic'>
+                    
 
                     <div class="text-center">
                         <button class="btn btn-indigo" onclick="CreateArticle('<?php echo $user ?>')">Send</button>
                     </div>
 
-                </form>        
+                   
         
         </div>
         <div class="tab-pane container" id="users">...</div>

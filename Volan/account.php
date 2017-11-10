@@ -15,7 +15,7 @@ require("server.php");
 $con = connect();
 
 
-$sql = "select * from v_users where user = '$user'";
+$sql = "select * from users where user = '$user'";
 $res = mysqli_query($con, $sql);
 $data = mysqli_fetch_array($res);
 
@@ -139,7 +139,6 @@ $email = $data["email"];
 <div style="height:1000px;">
   
 </div>
-<a href="#" data-toggle="tooltip" data-placement="right" title="Hooray!">Right</a>
     
 
   <!--BOOSTRAP, JQUYERY-->

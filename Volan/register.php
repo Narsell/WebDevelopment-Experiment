@@ -10,7 +10,7 @@ $email = $_POST['email'];
 $cod = rand(1000, 9999);
 $pwd = md5($pwd);
 
-$sql = "insert into v_users values ('$user', '$email', '$pwd', '$cod', '0')";
+$sql = "insert into users values ('$user', '$email', '$pwd', '$cod', '0', '10')";
 $request = mysqli_query($con, $sql);
 if($request)
 {
@@ -23,7 +23,7 @@ else
 
 //Creating the confirmation mail
 
-$link = "http://estudiantes.is.escuelaing.edu.co/~2114604/game/validate.php?cod=".$cod."&email=".$email;
+$link = "https://voilan.000webhostapp.com/validate.php?cod=".$cod."&email=".$email;
 
 $message = "<p>Welcome to AAA Game, ". $user ."!</p><p>Click the following link to activate your account: ".$link."</p>";
 

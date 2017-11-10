@@ -5,7 +5,7 @@ $con = connect();
 
 $id = $_GET['id'];
 
-$sql = "select * from v_news where id='$id'";
+$sql = "select * from news where id='$id'";
 $res = mysqli_query($con, $sql);
 
 $data = mysqli_fetch_array($res);

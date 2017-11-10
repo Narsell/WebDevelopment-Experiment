@@ -7,7 +7,7 @@ $con = connect();
 $user = $_POST['user'];
 $pwd= $_POST['pwd'];
 
-$consulta = "select * from v_users where user = '$user'";
+$consulta = "select * from users where user = '$user'";
 $res = mysqli_query($con, $consulta);
 
 $total =mysqli_num_rows($res);
