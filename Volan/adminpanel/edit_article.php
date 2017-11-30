@@ -16,29 +16,56 @@ session_start();
 require("../server.php");
 $con = connect();
 
-$id = $_GET['id'];
+/*EDITING THE THING*/
 
-$sql = "select * from news where id='$id'";
-$res = mysqli_query($con, $sql);
-
-$data = mysqli_fetch_array($res);
-$title = $data['title'];
-$des = $data['des'];
-$body = $data['body'];  
-$tag = $data['tag'];
-
-if($tag == 0)
+if($_POST)
 {
-  $tag = "Main Panel";
+ 
+  $id = $_POST['id'];
+  $tag =$_POST['tag'];
+  $title = $_POST['title'];
+  $des = $_POST['des'];
+  $body = $_POST['body'];
+  
+  $sql = "update news set title='$title', des='$des', tag='$tag', body='$body' where id='$id'";
+  $res = mysqli_query($con, $sql);
+  if($res)
+  {
+    echo"Article updated.";
+  }
+  else
+  {
+    echo"Error, contact an admin.";
+  }
+  return;
 }
-else if ($tag == 1)
+/*DISPLAYING THE THING*/
+else
 {
-  $tag = "Right Panel";
-}
-else{
-  $tag = "Secondary Panel";
-}
+    
+    $id = $_GET['id'];
 
+    $sql = "select * from news where id='$id'";
+    $res = mysqli_query($con, $sql);
+
+    $data = mysqli_fetch_array($res);
+    $title = $data['title'];
+    $des = $data['des'];
+    $body = $data['body'];  
+    $tag = $data['tag'];
+
+    if($tag == 0)
+    {
+      $tag = "Main Panel";
+    }
+    else if ($tag == 1)
+    {
+      $tag = "Right Panel";
+    }
+    else{
+      $tag = "Secondary Panel";
+    }
+}
 ?>
 
 <html>
@@ -53,11 +80,13 @@ else{
     <!--MDB CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/css/mdb.min.css">
   
+  
 <title>Edit Article</title>  
 </head>
 <body>
- 
-  <div class="card">
+    
+  </br>
+  <div class="container card">
     <div class="card-body">
                     <div class="md-form">
                       <div class="col-xs-6">
@@ -75,7 +104,7 @@ else{
 
                     <div class="md-form">
                       <div class="col-xs-6">
-                          <textarea id="body" class="form-control" value="<?php echo $body?>"></textarea>
+                          <textarea id="body" class="form-control" ><?php echo $body?></textarea>
                           <label for="body">CONTENT</label>
                       </div>
                     </div>
@@ -90,7 +119,7 @@ else{
                     
 
                     <div class="text-center">
-                        <button class="btn btn-indigo" onclick="Edit()">Update</button>
+                        <button class="btn btn-indigo" onclick="EditArticle(<?php echo $id?>)">Update</button>
                     </div>
     </div>
   </div>

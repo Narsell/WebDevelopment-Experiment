@@ -5,7 +5,7 @@ session_start();
 
    $user = $_SESSION['user'];
 
-   if($_SESSION['isAuth'] == false)
+   if(($_SESSION['isAuth'] == false) || ($_SESSION['rank'] != 'Admin'))
    {
      echo"
      <script>
@@ -39,7 +39,7 @@ $res = mysqli_query($con, $sql);
   </br>
   <div class="container">
     
-    <ul class="nav nav-tabs justify-content-center grey lighten-4 py-4">
+    <ul class="nav nav-tabs justify-content-center">
       <li class="nav-item">
         <a class="nav-link active" data-toggle="tab" href="#n_list">News List</a>
       </li>
@@ -53,88 +53,92 @@ $res = mysqli_query($con, $sql);
 
       <!-- Tab panes -->
       <div class="tab-content">
-        <div class="tab-pane active container" id="n_list">
-              
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>TAG</th>
-                    <th>TITLE</th>
-                    <th>DESC</th>
-                    <th>AUTHOR</th>
-                    <th>MANAGE</th>
-                  </tr>
-                </thead>
-            <?php
-                while($data = mysqli_fetch_array($res))
-                {
-                  echo
-                    "
-                     <tbody>
-                      <tr>
-                        <td>".$data['id']."</td>
-                        <td>".$data['tag']."</td>
-                        <td>".$data['title']."</td>
-                        <td>".$data['des']."</td>
-                        <td>".$data['author']."</td>
-                        <td>
-                            <div class='btn-group'>
-                              <button class='btn btn-danger btn-sm' onclick='DeleteArticle(".$data['id'].")'><i class='fa fa-trash' aria-hidden='true'></i>
-                              <button class='btn btn-info btn-sm' onclick=EditArticle(".$data['id'].")><i class='fa fa-edit' aria-hidden='true'></i>                      
-                            </div>
-                        </td>
-                      </tr>
-                     </tbody>
+          <div class="tab-pane active container" id="n_list">
 
-                    ";
-                }
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>TAG</th>
+                      <th>TITLE</th>
+                      <th>DESC</th>
+                      <th>AUTHOR</th>
+                      <th>MANAGE</th>
+                    </tr>
+                  </thead>
+              <?php
+                  while($data = mysqli_fetch_array($res))
+                  {
+                    echo
+                      "
+                       <tbody>
+                        <tr>
+                          <td>".$data['id']."</td>
+                          <td>".$data['tag']."</td>
+                          <td>".$data['title']."</td>
+                          <td>".$data['des']."</td>
+                          <td>".$data['author']."</td>
+                          <td>
+                              <div class='btn-group'>
+                                <button class='btn btn-danger btn-sm' onclick='DeleteArticle(".$data['id'].")'><i class='fa fa-trash' aria-hidden='true'></i>
+                                <button class='btn btn-info btn-sm' onclick='SendId(".$data['id'].")'><i class='fa fa-edit' aria-hidden='true'></i>                      
+                              </div>
+                          </td>
+                        </tr>
+                       </tbody>
 
-              ?>
-              </table>
+                      ";
+                  }
 
-        </div>
-        <div class="tab-pane container" id="article">
-          </br>
-                    <div class="md-form">
-                      <div class="col-xs-6">
-                        <input type="text" id="title" class="form-control">
-                        <label for="title">TITLE</label>
+                ?>
+                </table>
+
+          </div>
+          <div class="tab-pane container" id="article">
+            </br>
+                      <div class="md-form">
+                        <div class="col-xs-6">
+                          <input type="text" id="title" class="form-control">
+                          <label for="title">TITLE</label>
+                        </div>
                       </div>
-                    </div>
-                   
-                     <div class="md-form">
-                      <div class="col-xs-6">
-                          <input type='text' id="des" class="form-control">
-                          <label for="des">SHORT DESCRIPTION</label>
+
+                       <div class="md-form">
+                        <div class="col-xs-6">
+                            <input type='text' id="des" class="form-control">
+                            <label for="des">SHORT DESCRIPTION</label>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="md-form">
-                      <div class="col-xs-6">
-                          <textarea id="body" class="form-control"></textarea>
-                          <label for="body">CONTENT</label>
+                      <div class="md-form">
+                        <div class="col-xs-6">
+                            <textarea id="body" class="md-textarea"></textarea>
+                            <label for="body">CONTENT</label>
+                        </div>
                       </div>
-                    </div>
-     
-                    <select id='tag' class="custom-select">
-                      <option selected>Select a category</option>
-                      <option value="0">Main Panel</option>
-                      <option value="1">Right Panel</option>
-                      <option value="2">Secondary Panel</option>
-                    </select>
-              
-                    <input type='file' id="img" name='pic'>
-                    
 
-                    <div class="text-center">
-                        <button class="btn btn-indigo" onclick="CreateArticle('<?php echo $user ?>')">Send</button>
-                    </div>
+                      <select id='tag' class="custom-select">
+                        <option selected>Select a category</option>
+                        <option value="0">Main Panel</option>
+                        <option value="1">Right Panel</option>
+                        <option value="2">Secondary Panel</option>
+                      </select>
 
-                   
+                      <input type='file' id="img" name='pic'>
+
+
+                      <div class="text-center">
+                          <button class="btn btn-indigo" onclick="CreateArticle('<?php echo $user ?>')">Send</button>
+                      </div>
+
+
+
+          </div>
+          <div class="tab-pane container" id="users">
+            
+            <input type='text'></input>
         
-        </div>
-        <div class="tab-pane container" id="users">...</div>
+          </div>
       </div>
        
   </div>

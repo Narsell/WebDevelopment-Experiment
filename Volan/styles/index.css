@@ -1,0 +1,47 @@
+#page
+{
+  background-color: black;
+  min-width: 400px;
+  max-width: 2400px;
+  margin: 0 auto;
+
+}
+
+video .poster
+
+{
+  width: 100%;
+}
+@media only screen and (max-width: 980px) 
+{ 
+     .video
+    {
+      display: none;
+    }
+
+    .image
+    {
+      display: block;
+    }
+}
+
+@media only screen and (min-width: 981px) 
+{ 
+     .video
+    {
+      display: block;
+    }
+
+    .image
+    {
+      display: none;
+    }
+}
+
+@media only screen and (min-width: 1920px)
+{
+  .video video
+  {
+    width: 100%!important;
+  }
+}

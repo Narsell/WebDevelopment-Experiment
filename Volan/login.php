@@ -9,24 +9,26 @@ $pwd= $_POST['pwd'];
 
 $consulta = "select * from users where user = '$user'";
 $res = mysqli_query($con, $consulta);
-
-$total =mysqli_num_rows($res);
+$total = mysqli_num_rows($res);
 
 if($total == 0)
 {
   echo "User not found";
-
+  
 }
 else {
 
-  $datos = mysqli_fetch_array($res); //Guardo el user que coincide en un "arreglo"
-  $pwd_bd = $datos["pwd"]; //comparo su contraseña con la que ingresó el usuario.
-  $is_val = $datos["is_val"];
+  $data = mysqli_fetch_array($res); //Guardo el user que coincide en un "arreglo"
+  $pwd_bd = $data["pwd"]; //comparo su contraseña con la que ingresó el usuario.
+  $user = $data['user']; //Tomo el nombre directo de la base de datos.
+  $is_val = $data["is_val"];
+  $rank = $data['rank'];
 
-  if( (md5($pwd) == $pwd_bd) && ($is_val) )
+  if( (md5($pwd) == $pwd_bd))
   {
     $_SESSION['isAuth'] = true;
-    $_SESSION['user'] = $user;
+    $_SESSION['user'] = ucfirst($user); //Capitalize
+    $_SESSION['rank'] = $rank;
 
   }
   else

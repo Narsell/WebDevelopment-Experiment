@@ -22,18 +22,18 @@ var author = user;
     form_data.append('des', des);
     form_data.append('tag', tag);
     form_data.append('author', author);
-
-    alert(form_data);                             
+                            
     $.ajax({
-                url: 'new_article.php', // point to server-side PHP script 
-                dataType: 'text',  // what to expect back from the PHP script, if anything
+                url: 'new_article.php', 
+                dataType: 'text',  
                 cache: false,
                 contentType: false,
                 processData: false,
                 data: form_data,                         
                 type: 'post',
                 success: function(php_script_response){
-                    alert(php_script_response); // display response from the PHP script, if any
+                    alert(php_script_response); 
+                    window.open("index.php", "_self");
                 }
      }); 
  
@@ -57,7 +57,23 @@ function DeleteArticle(id)
 
 }
 
+function SendId(id)
+{
+  window.open("edit_article.php?id="+id, "_self");  
+}
+
 function EditArticle(id)
 {
-  window.open("edit_article.php?id="+id, "_self")  
+          
+      var title = $("#title").val();
+      var des = $("#des").val();
+      var body = $("#body").val();
+      var tag = $("#tag").val();
+ 
+  
+              $.post("edit_article.php", {id:id, title:title, tag:tag, des:des, body:body })
+                  .done(function(data){
+                    if(data) {alert(data);}
+                    window.open("index.php", "_self");
+                });
 }

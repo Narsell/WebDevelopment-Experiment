@@ -10,7 +10,7 @@ $email = $_POST['email'];
 $cod = rand(1000, 9999);
 $pwd = md5($pwd);
 
-$sql = "insert into users values ('$user', '$email', '$pwd', '$cod', '0', '10')";
+$sql = "insert into users values ('$user', '$email', '$pwd','Unverified' ,'10', '$cod')";
 $request = mysqli_query($con, $sql);
 if($request)
 {
@@ -19,13 +19,14 @@ if($request)
 else
 {
     echo "Error creating user";
+    return;
 }
 
 //Creating the confirmation mail
 
-$link = "https://voilan.000webhostapp.com/validate.php?cod=".$cod."&email=".$email;
+$link = "http://estudiantes.is.escuelaing.edu.co/~2114604/volan/validate.php?cod=".$cod."&email=".$email;
 
-$message = "<p>Welcome to AAA Game, ". $user ."!</p><p>Click the following link to activate your account: ".$link."</p>";
+$message = "<p>Welcome to Volan Studios, ". $user ."!</p><p>Click the following link to activate your account: ".$link."</p>";
 
 $From= 'admin@volanstudios.com';
 $to = $email;
@@ -41,11 +42,11 @@ $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
 if( mail($to, $subject, $message, $headers) )
 {
-  echo "Your user has been created, a link has been sent to your email for validation.";
+  echo ", a link has been sent to your email for validation.";
 }
 else
 {
-  echo "Email error";
+  echo "There was an error emailing your validation code, please contact support to get this sorted.";
 }
 
 

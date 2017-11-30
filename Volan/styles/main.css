@@ -1,16 +1,25 @@
-
-/*GENERAL*/
 body
 {
-  background-image: url(../img/main_bg.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-
+background: #1c1005; /* Old browsers */
+background: -moz-linear-gradient(left, #1c1005 0%, #300909 50%, #1c1005 100%, #1c1005 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #1c1005 0%,#300909 50%,#1c1005 100%,#1c1005 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #1c1005 0%,#300909 50%,#1c1005 100%,#1c1005 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c1005', endColorstr='#1c1005',GradientType=1 ); /* IE6-9 */
 }
 
-.space_md
+.space-sm
 {
- height: 50px; 
+ height: 17px; 
+}
+
+.space-md
+{
+  height: 50px;
+}
+
+.space-lg
+{
+  height: 100px;
 }
 
 .jumbotron
@@ -23,48 +32,12 @@ body
   text-shadow: 0.5px 0.5px black;
 }
 
-.top-md
+
+.navbar
 {
-  margin-top: 63px;
-  
+  max-width: 2400px;
+  margin: 0 auto;
 }
-
-.top-lg
-{
-  margin-top: 100px;
-}
-
-/*NEWS*/
-.no-gutters 
-{
-    padding-right: 0;
-    padding-left: 0;
-  
-}
-
-.main
-{
-  margin: 0;
-}
-
-.right
-{
-  
-}
-
-
-
-/*Carousel mods*/
-.carousel-item
-{
-    width: 100%;
-    height: 100%;
-    background: no-repeat;
-    background-size: cover;
-}
-
-/*Navbar mods*/
-
 .dropdown .dropdown-menu .dropdown-item:hover 
 {
   background-color: #343a40;
@@ -102,9 +75,4 @@ body
 {
   margin-right: 10px;
 }
-
-
-
-/*NEWS*/
-
 

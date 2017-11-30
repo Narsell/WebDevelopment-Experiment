@@ -15,9 +15,32 @@ $cod_bd = $data['v_cod'];
 
 if($cod_bd == $cod)
 {
-  $sql = "update users set is_val = '1' where email = '$email'";
+  $sql = "update users set rank = 'Newbie' where email = '$email'";
   mysqli_query($con, $sql);
+  
+  echo"
+      
+      <script>
+        
+        alert('Your account has been verified, you will now be redirected to the main page so you can log in.');
+        window.open('index.php', '_self');
+        
+      </script>
+  
+  ";
 }
-
+else
+{
+    echo"
+      
+      <script>
+        
+        alert('Invalid code.');
+        window.open('index.php', '_self');
+        
+      </script>
+  
+  ";
+}
 
 ?>
