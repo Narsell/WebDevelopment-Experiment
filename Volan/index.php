@@ -115,18 +115,6 @@ if(!$_SESSION)
         </div>
     </div>
 
-
-
-        <!--<header id='header' class="jumbotron text center">
-            <h1>Volan Studios</h1>
-            <h3>Nullam vel accumsan enim</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel egestas velit.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel egestas velit lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-            <button id="dw_button"type="button" class="btn btn-success">Download</button>
-
-        </header>-->
-
-
         <div class="modal" tabindex='-1' id="log_box" role="dialog">
             <div class="modal-dialog" role='document'>
 

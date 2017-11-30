@@ -32,7 +32,7 @@ function LogValidate()
       $.post("login.php", {user : user,  pwd : pwd})
       .done(function(data){
         if(data) {alert(data);}
-        window.open("index.php", "_self");
+        location.reload();
       });
     }
 

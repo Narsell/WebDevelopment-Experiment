@@ -3,7 +3,7 @@
   background-image: url("../img/news_bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  min-width: 400px;
+  min-width: 350px;
   max-width: 2400px;
   margin: 0 auto;
 }
@@ -42,12 +42,6 @@
   margin-left: 2px;
   margin-right: 2px;
 }
-
-  .main-cont
-  {
-    min-width: 96%;
-  }
-
 
 @media only screen and (min-width: 1336px) 
 { 

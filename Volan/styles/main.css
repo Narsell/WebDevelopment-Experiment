@@ -22,17 +22,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c1005', end
   height: 100px;
 }
 
-.jumbotron
-{
-  margin-bottom: 0px;
-  background-image: url(https://coverfiles.alphacoders.com/453/45317.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: white;
-  text-shadow: 0.5px 0.5px black;
-}
-
-
 .navbar
 {
   max-width: 2400px;
@@ -74,5 +63,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c1005', end
 #MyAccountDD
 {
   margin-right: 10px;
+}
+
+.main-cont
+{
+    min-width: 96%;
 }
 

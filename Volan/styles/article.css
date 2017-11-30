@@ -1,0 +1,19 @@
+#page
+{
+ /* background-image: url("../img/news_bg.jpg");*/
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-width: 350px;
+  max-width: 2400px;
+  margin: 0 auto;
+}
+
+.jumbotron
+{
+  background-image: url("../img/sylvanas1.jpg");
+  background-size: cover;
+  min-height: 500px;
+  color: white;
+}
+
+

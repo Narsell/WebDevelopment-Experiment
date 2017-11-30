@@ -40,15 +40,7 @@ $data_main=mysqli_fetch_array($res_main);
   </head>
   <body>
   
-  <div id=page>
-     <!-- <header class="jumbotron text center">
-          <h1>Volan Studios</h1>
-          <h3>Nullam vel accumsan enim</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel egestas velit.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel egestas velit lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-          <button id="dw_button"type="button" class="btn btn-success">Download</button>
-
-      </header>-->   
+  <div id=page> 
     
   <nav id='navbar' class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark top-navbar">
     <a class="navbar-brand" href="#">Volan</a>
@@ -223,17 +215,19 @@ $data_main=mysqli_fetch_array($res_main);
                   <?php 
                             echo
                                  "
-                                   <div class='main card text-center col-sm-12 col-md-8'>
-                                      <img class='img-fluid' src='http://estudiantes.is.escuelaing.edu.co/~2114604/volan/news_img/main.jpg' alt='Card image'>
-                                      <div class='card-img-overlay'>
+                                     <div class='main card text-center col-sm-12 col-md-8'>
+                                       <a href='article.php?id=".$data_main['id']."'><img class='img-fluid' src='http://estudiantes.is.escuelaing.edu.co/~2114604/volan/news_img/main.jpg' alt='Card image'>
+                                          <div class='card-img-overlay'>
 
 
-                                          <h4 class='card-title text-white'>".$data_main['title']."</h4>
-                                          <p class='card-text text-white'>".$data_main['des']."</p>
+                                              <h4 class='card-title text-white'>".$data_main['title']."</h4>
+                                              <p class='card-text text-white'>".$data_main['des']."</p>
 
 
-                                      </div>
-                                   </div>
+                                          </div>
+                                       </a>
+                                     </div>
+                                    
                                  ";
 
                       ?>
@@ -244,15 +238,15 @@ $data_main=mysqli_fetch_array($res_main);
                               $test = 0;
                               while($data_right=mysqli_fetch_array($res_right))
                               {
-                                       echo"
+                                       echo"<a href='article.php?id=".$data_right['id']."'>
                                                <div class='right card text-center'>
-                                                  <img class='img-fluid' src='http://estudiantes.is.escuelaing.edu.co/~2114604/volan/news_img/kek.jpg' alt='Card image'>
+                                                   <img class='img-fluid' src='http://estudiantes.is.escuelaing.edu.co/~2114604/volan/news_img/kek.jpg' alt='Card image'>
                                                     <div class='card-img-overlay'>
                                                       <h4 class='card-title text-white'>".$data_right['title']."</h4>                                                                  
                                                       <p class='card-text text-white'>".$data_right['des']."</p>
                                                     </div>
                                                  </div>
-
+                                              </a>
                                        ";
                                 if($test == 0){echo"<div class='space-sm'></div>";}
                                 $test++;
@@ -272,9 +266,9 @@ $data_main=mysqli_fetch_array($res_main);
               while($data_sec = mysqli_fetch_array($res_sec))
               {
                        echo
-                         "
-                            <div class='sec-panel card bg-dark text-white text-center col-md-5 col-lg-3'>
-                                <img class='card-img' src='https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-529639.jpg' alt='Card image'></a>
+                         " <div class='sec-panel card bg-dark text-white text-center col-md-5 col-lg-3'>
+                              <a href='article.php?id=".$data_right['id']."'>
+                               <img class='card-img' src='https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-529639.jpg' alt='Card image'>
                                 <div class='card-img-overlay'>
                                   <h4 class='card-title text-white'>".$data_sec['title']."</h4>
                                   <p class='card-text text-white' >".$data_sec['des']."</p>
@@ -282,8 +276,9 @@ $data_main=mysqli_fetch_array($res_main);
                                 <div class='card-footer'>
                                   <small class='text-muted'>Written by: ".$data_sec['author']."</small>
                                 </div>
+                               </a>
                             </div>
-
+                          
 
 
 
