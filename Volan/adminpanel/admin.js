@@ -22,7 +22,7 @@ var author = user;
     form_data.append('des', des);
     form_data.append('tag', tag);
     form_data.append('author', author);
-                            
+    $(".loading").html("<img src='../img/loading.gif' style='width: 50px;'>");                        
     $.ajax({
                 url: 'new_article.php', 
                 dataType: 'text',  

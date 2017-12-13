@@ -1,3 +1,15 @@
+$(function() {
+  $('.top').hover(function() {
+    
+    $('.top').css('opacity', '0');
+    $('.bottom').css('opacity', '1');
+    
+  }, function() {
+    
+    $('.top').css('opacity', '1');
+    $('.bottom').css('opacity', '0');
+  });
+});
 
 $(window).scroll(function (event) {
     var scroll = $(window).scrollTop();

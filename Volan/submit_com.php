@@ -3,7 +3,7 @@ session_start();
 require("server.php");
 $con = connect();
 
-$user = $_SESSION['user']; 
+$user = $_POST['user']; 
 $art_id= $_POST['articleid'];
 $content = $_POST['content'];
 

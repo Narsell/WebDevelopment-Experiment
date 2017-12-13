@@ -7,7 +7,36 @@ if(localStorage)
     $("#l_pwd").val(pwd);
   }
 
-
+function ChangePic(username)
+{
+  if(!$("#img").val())
+    {
+      return;
+    }
+  
+    var file_data = $('#img').prop('files')[0];   
+    var form_data = new FormData();      
+    
+  
+  var user = username;
+  
+    form_data.append('file', file_data);
+    form_data.append('user', user);
+     $(".loading").html("<img src='../img/loading.gif' style='width: 50px;'>");
+      $.ajax({
+                url: 'update_pic.php', 
+                dataType: 'text',  
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,                         
+                type: 'post',
+                success: function(php_script_response){
+                    alert(php_script_response); 
+                    location.reload();
+                }
+     }); 
+}
 function LogValidate()
 {
     var user = $("#l_user").val();
@@ -84,7 +113,7 @@ function RegValidate()
       $.post("register.php", {user : user, email : email, pwd : pwd})
       .done(function(data){
         if(data) {alert(data);}
-        window.open("index.php", "_self");
+        $('#reg_box').modal('hide');
       });
 
     }
@@ -97,7 +126,7 @@ function LogOut()
     .done(function(data)
       {
         if(data){alert(data);}
-        window.open("index.php", "_self");
+        location.reload();
         
       });
 }

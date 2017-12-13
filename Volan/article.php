@@ -1,7 +1,15 @@
 <?php
 
+session_start();
 require("server.php");
 $con = connect();
+
+$user = null;
+
+if($_SESSION['isAuth'])
+{
+  $user = $_SESSION['user'];
+}
 
 $id = $_GET['id'];
 $sql_art = "select * from news where id='$id'";
@@ -12,14 +20,9 @@ $article = mysqli_fetch_array($res_art);
 $sql_com = "select * from comments where article_id='$id'";
 $res_com = mysqli_query($con, $sql_com);
 
-if($_SESSION)
-{
-  $user = $_SESSION['user'];
-}
-else
-{
-  $user = null;  
-}
+
+
+
 
 ?>
 
@@ -52,7 +55,7 @@ else
     <div id='page'>
       
       
-        <nav id='navbar' class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark top-navbar">
+   <nav id='navbar' class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark top-navbar">
     <a class="navbar-brand" href="#">Volan</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -217,9 +220,9 @@ else
               </div>
       
           <div class='space-md'>  </div>
-          <div class='main-cont'>
+
             
-            <div class="jumbotron">
+            <div class="jumbotron" style='background-image: url("<?php echo $article['img_url'] ?>")'>
               <h1 class="display-3"><?php echo $article['title'];?></h1>
               <p class="lead"><?php echo $article['des'];?></p>
               <hr class="my-4">
@@ -227,48 +230,54 @@ else
                 <small>Written by <?php echo $article['author'];?></small>
               </p>
             </div>
-            
+          
+         <div class='main-cont'>      
             <div class='card text'>
               <div class='card-body'>
                <?php echo $article['body'];?> 
               </div>
               
-            </div>
-            
-         </div>
-          
-          <div class='card text-center'>
-            <div class='card-title'> COMMENTS</div>           
+            </div>           
+          <div class="space-md">
+           
+           </div>
+           <div class='card text-center'>          
 
-            <div class='card-body'>
-                   <div class="md-form">
-                     <div class="col-xs-6">
-                         <textarea id="comment" class="md-textarea"></textarea>
-                         <label for="comment">Write a comment!</label>
+              <div class='card-body'>
+                     <div class="md-form">
+                       <div class="col-xs-6">
+                           <textarea id="comment" class="md-textarea"></textarea>
+                           <label for="comment">Write a comment!</label>
+                        </div>
+                     </div>
+                <button class="btn btn-indigo" onclick="SubmitComment('<?php echo $user; ?>', <?php echo $id; ?>)">Submit</button>
+                <hr class="my-4">
+                <?php 
+                while($comment = mysqli_fetch_array($res_com))
+                {
+                  $com_user = $comment['user'];
+                  $sql = "select profile_pic from users where user ='$com_user'";
+                  $re = mysqli_query($con, $sql);
+                  $profile_url = mysqli_fetch_array($re);
+                  
+                  echo"
+                      <div class='media'>
+                        <img class='mr-3 rounded-circle' src='".$profile_url[0]."' style='width:121px; height: 121px;'>
+                        <div class='media-body'>
+                          <h5 class='mt-0'>".$com_user."</h5>
+                          ".$comment['content']."
+                         </div>
                       </div>
-                   </div>
-              <button class="btn btn-indigo" onclick='SubmitComment(<?php echo $id; ?>)'>Send</button>
-              <hr class="my-4">
-              <?php 
-              while($comments = mysqli_fetch_array($res_com))
-              {
-                echo"
-                    <div class='media'>
-                      <img class='mr-3 rounded-circle' src='//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120'>
-                      <div class='media-body'>
-                        <h5 class='mt-0'>".$comments['user']."</h5>
-                        ".$comments['content']."
-                       </div>
-                    </div>
-                    <hr class='my-4'>
+                      <hr class='my-4'>
 
-                
-                ";
-              }
-              
-              ?> 
-            </div>
+
+                  ";
+                }
+
+                ?> 
+              </div>
           </div>
+       </div>
           
           
       

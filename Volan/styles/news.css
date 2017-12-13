@@ -3,44 +3,64 @@
   background-image: url("../img/news_bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  min-width: 350px;
+  min-width: 300px;
   max-width: 2400px;
   margin: 0 auto;
 }
 
-
-.no-gutters 
-{
-  margin-left: 0px!important;
-  margin-right: 0px!important;  
-  
-}
 .main
 {
   margin-left: 0px!important;
   margin-right: 0px!important;
-  
 }
-
 .right
 {
-  width: auto;
   margin-right: 0px!important;
-
-}
-
-.card
-{
-  border: 1px solid rgba(0,0,0,.125)!important;
-  border-radius: .25rem!important;
+  
 }
 
 .sec-panel
 {
   padding: 0px;
   margin-bottom: 8px;
-  margin-left: 2px;
-  margin-right: 2px;
+}
+.card-deck
+{
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.card
+{
+  border: 1px solid #000 !important;
+  border-radius: .1rem!important;
+  background-color: #000;
+}
+
+.card:hover
+{
+  border: 1px solid #CF7D02!important;
+  border-radius: .1rem!important;
+} 
+
+.card-img-overlay
+{
+  background-color: rgba(29, 26, 26, 0.5);
+  max-height: 45%;
+  top: unset;
+  padding: 5px;
+}
+
+@media only screen and (max-width: 1336px) 
+{ 
+    .sec-panel .card-img-overlay p
+  {
+    font-size: 0.8rem;
+  }
+    .sec-panel .card-img-overlay h5
+  {
+    font-size: 1rem;
+  }
 }
 
 @media only screen and (min-width: 1336px) 
@@ -49,6 +69,8 @@
   {
     min-width: 32%;
   }
+  
+
 }
 
 @media only screen and (min-width: 1000px) and (max-width: 1335px)

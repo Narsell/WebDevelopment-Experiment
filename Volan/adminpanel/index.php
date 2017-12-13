@@ -32,6 +32,8 @@ $res = mysqli_query($con, $sql);
     
     <!--MDB CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/css/mdb.min.css">
+
+
   
 <title>Admin Panel</title>  
 </head>
@@ -126,10 +128,13 @@ $res = mysqli_query($con, $sql);
 
                       <input type='file' id="img" name='pic'>
 
-
+                      
                       <div class="text-center">
+                          <div class="loading"></div>
+                          </br>
                           <button class="btn btn-indigo" onclick="CreateArticle('<?php echo $user ?>')">Send</button>
                       </div>
+                      
 
 
 

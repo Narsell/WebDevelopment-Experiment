@@ -9,7 +9,7 @@ $up_path;
         echo 'Error: ' . $_FILES['file']['error'] . '<br>';
     }
     else {
-        $up_path = '../news_img/' . $_FILES['file']['name'];
+        $up_path = '/news_img/' . $_FILES['file']['name'];
         move_uploaded_file($_FILES['file']['tmp_name'], '../news_img/' . $_FILES['file']['name']);
     }
 

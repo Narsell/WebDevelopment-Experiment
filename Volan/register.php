@@ -10,7 +10,7 @@ $email = $_POST['email'];
 $cod = rand(1000, 9999);
 $pwd = md5($pwd);
 
-$sql = "insert into users values ('$user', '$email', '$pwd','Unverified' ,'10', '$cod')";
+$sql = "insert into users values ('$user', '$email', '$pwd', 'profile_pics/default.png' ,'Unverified' ,'10', '$cod')";
 $request = mysqli_query($con, $sql);
 if($request)
 {
@@ -24,9 +24,11 @@ else
 
 //Creating the confirmation mail
 
-$link = "http://estudiantes.is.escuelaing.edu.co/~2114604/volan/validate.php?cod=".$cod."&email=".$email;
+$link = "https://voilan.000webhostapp.com/validate.php?cod=".$cod."&email=".$email;
 
-$message = "<p>Welcome to Volan Studios, ". $user ."!</p><p>Click the following link to activate your account: ".$link."</p>";
+$message = "<p>Welcome to Volan Studios, ". $user ."!</p>
+              <p>Click <a href='https://voilan.000webhostapp.com/validate.php?cod=".$cod."&email=".$email."'>here</a> to verify your account</p>
+              <p>If you can't click on the link, copy the following adress into your browser: ".$link;
 
 $From= 'admin@volanstudios.com';
 $to = $email;

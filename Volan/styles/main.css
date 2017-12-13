@@ -3,8 +3,7 @@ body
 background: #1c1005; /* Old browsers */
 background: -moz-linear-gradient(left, #1c1005 0%, #300909 50%, #1c1005 100%, #1c1005 100%); /* FF3.6-15 */
 background: -webkit-linear-gradient(left, #1c1005 0%,#300909 50%,#1c1005 100%,#1c1005 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to right, #1c1005 0%,#300909 50%,#1c1005 100%,#1c1005 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c1005', endColorstr='#1c1005',GradientType=1 ); /* IE6-9 */
+
 }
 
 .space-sm
@@ -21,7 +20,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c1005', end
 {
   height: 100px;
 }
-
 .navbar
 {
   max-width: 2400px;
@@ -67,6 +65,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c1005', end
 
 .main-cont
 {
-    min-width: 96%;
+    max-width: 96%;
+    margin: 0 auto;
 }
 
