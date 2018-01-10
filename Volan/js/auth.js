@@ -58,6 +58,7 @@ function LogValidate()
           localStorage.setItem("pwd", pwd);
         }
       
+      $("#l_loading").html("<img src='../img/loading.gif' style='width: 50px;'>");   
       $.post("login.php", {user : user,  pwd : pwd})
       .done(function(data){
         if(data) {alert(data);}
@@ -110,6 +111,7 @@ function RegValidate()
     
   else
     {
+      $("#r_loading").html("<img src='../img/loading.gif' style='width: 50px;'>");   
       $.post("register.php", {user : user, email : email, pwd : pwd})
       .done(function(data){
         if(data) {alert(data);}

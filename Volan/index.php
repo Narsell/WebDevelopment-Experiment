@@ -148,8 +148,11 @@ if(!$_SESSION)
                        <label for="remember">Remember me</label>
 
                   </form>
+                    <div class='text-center'>
+                        <div id="l_loading"></div>
+                        <div id="l_alerts"></div>                     
+                    </div>
 
-                        <div id="l_alerts"></div>
                 </div>
 
                 <div class="modal-footer">
@@ -204,7 +207,12 @@ if(!$_SESSION)
                         <button type="button" class="btn btn-success" onclick="RegValidate()">Enter</button>
 
                     </form>
-                    <div id="r_alerts"></div>
+                    
+                    <div class='text-center'>
+                        <div id="r_loading"></div>
+                        <div id="r_alerts"></div>                     
+                    </div>
+                    
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

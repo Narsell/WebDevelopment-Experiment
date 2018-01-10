@@ -7,10 +7,14 @@ $user = $_POST['user'];
 $pwd= $_POST['pwd'];
 $email = $_POST['email'];
 
-$cod = rand(1000, 9999);
-$pwd = md5($pwd);
+$cod = mt_rand(1000, 9999);
 
-$sql = "insert into users values ('$user', '$email', '$pwd', 'profile_pics/default.png' ,'Unverified' ,'10', '$cod')";
+// Generate a random IV using openssl_random_pseudo_bytes()
+// random_bytes() or another suitable source of randomness
+
+$hashpwd = password_hash($pwd , PASSWORD_DEFAULT);
+
+$sql = "insert into users values ('$user', '$email', '$hashpwd', 'profile_pics/default.png' ,'Unverified' ,'10', '$cod')";
 $request = mysqli_query($con, $sql);
 if($request)
 {
