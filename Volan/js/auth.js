@@ -1,11 +1,3 @@
-if(localStorage)
-  {
-    var user = localStorage.getItem("user");
-    var pwd = localStorage.getItem("pwd");
-    
-    $("#l_user").val(user);
-    $("#l_pwd").val(pwd);
-  }
 
 function ChangePic(username)
 {
@@ -39,59 +31,59 @@ function ChangePic(username)
 }
 function LogValidate()
 {
-    var user = $("#l_user").val();
+    var username = $("#l_user").val();
     var pwd = $("#l_pwd").val();
-    var remember = document.getElementById("remember").checked;
-     
-    if(!user || !pwd)
+    var RememberMe = document.getElementById('RememberMe').checked;
+  
+    if(RememberMe)    //For some reason i have to do this or php wont understant the true/false returned by .checked ????   
+        RememberMe = '1';      
+    else  
+        RememberMe = '0';
+    
+  
+    if(!username || !pwd)
     {
         $("#l_alerts").html("<div class='alert alert-danger alert-dismissable fade show'>\
         <button type='button' class='close' data-dismiss='alert'>&times;</button>\
         <strong>Fields missing!</strong></div>");
-
+      return;
     }
-    else
-    {
-        if(remember)
-        {
-          localStorage.setItem("user", user);
-          localStorage.setItem("pwd", pwd);
-        }
+ 
       
       $("#l_loading").html("<img src='../img/loading.gif' style='width: 50px;'>");   
-      $.post("login.php", {user : user,  pwd : pwd})
+      $.post("login.php", {username : username,  pwd : pwd, RememberMe : RememberMe })
       .done(function(data){
-        if(data) {alert(data);}
+        if(data) {alert(data);} //TODO: reload or not based on result
         location.reload();
       });
-    }
+    
 
 }
 
 function RegValidate()
 {
- var user = $("#r_user").val();
+ var username = $("#r_user").val();
  var pwd = $("#r_pwd").val();
  var pwd2 = $("#r_2pwd").val();
  var email = $("#r_email").val();
   
-    if(!user || !pwd || !pwd2 || !email)
+    if(!username || !pwd || !pwd2 || !email)
     {
          $("#r_alerts").html("<div class='alert alert-danger alert-dismissable fade show'>\
         <button type='button' class='close' data-dismiss='alert'>&times;</button>\
         <strong>Fields missing!</strong></div>"); 
     }
-    else if(user.length < 5)
+    else if(username.length < 5)
       {
           $("#r_alerts").html("<div class='alert alert-danger alert-dismissable fade show'>\
         <button type='button' class='close' data-dismiss='alert'>&times;</button>\
         <strong>User must be at least 5 characters long!</strong></div>");        
       }
-        else if(pwd.length < 5)
+        else if(pwd.length <= 6)
       {
           $("#r_alerts").html("<div class='alert alert-danger alert-dismissable fade show'>\
         <button type='button' class='close' data-dismiss='alert'>&times;</button>\
-        <strong>Password must be at least 5 characters long!</strong></div>");        
+        <strong>Password must be at least 6 characters long!</strong></div>");        
       }
       else if(!hasNumber(pwd))
       {
@@ -112,10 +104,10 @@ function RegValidate()
   else
     {
       $("#r_loading").html("<img src='../img/loading.gif' style='width: 50px;'>");   
-      $.post("register.php", {user : user, email : email, pwd : pwd})
+      $.post("register.php", {username : username, email : email, pwd : pwd})
       .done(function(data){
         if(data) {alert(data);}
-        $('#reg_box').modal('hide');
+        $('#reg_box').modal('hide'); //TODO: Reload or not based on the result.
       });
 
     }

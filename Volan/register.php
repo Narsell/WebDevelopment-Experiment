@@ -3,18 +3,15 @@
 require("server.php");
 $con = connect();
 
-$user = $_POST['user'];
+$username = $_POST['username'];
 $pwd= $_POST['pwd'];
 $email = $_POST['email'];
 
 $cod = mt_rand(1000, 9999);
 
-// Generate a random IV using openssl_random_pseudo_bytes()
-// random_bytes() or another suitable source of randomness
-
 $hashpwd = password_hash($pwd , PASSWORD_DEFAULT);
 
-$sql = "insert into users values ('$user', '$email', '$hashpwd', 'profile_pics/default.png' ,'Unverified' ,'10', '$cod')";
+$sql = "insert into users values (null, '$username', '$email', '$hashpwd', 'profile_pics/default.png' ,'Unverified' ,'10', '$cod')";
 $request = mysqli_query($con, $sql);
 if($request)
 {
@@ -30,7 +27,7 @@ else
 
 $link = "https://voilan.000webhostapp.com/validate.php?cod=".$cod."&email=".$email;
 
-$message = "<p>Welcome to Volan Studios, ". $user ."!</p>
+$message = "<p>Welcome to Volan Studios, ". $username ."!</p>
               <p>Click <a href='https://voilan.000webhostapp.com/validate.php?cod=".$cod."&email=".$email."'>here</a> to verify your account</p>
               <p>If you can't click on the link, copy the following adress into your browser: ".$link;
 

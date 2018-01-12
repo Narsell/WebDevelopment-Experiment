@@ -6,6 +6,8 @@ if(!$_SESSION)
   $_SESSION['isAuth'] = null;
 }
 
+require("ValidateSession.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -144,8 +146,8 @@ if(!$_SESSION)
                     
                                           
                        <button type="button" class="btn btn-success" onclick="LogValidate()">Enter</button>                   
-                       <input type="checkbox" id="remember">
-                       <label for="remember">Remember me</label>
+                       <input type="checkbox" id="RememberMe">
+                       <label for="RememberMe">Remember me</label>
 
                   </form>
                     <div class='text-center'>
